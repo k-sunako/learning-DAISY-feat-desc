@@ -17,6 +17,7 @@ scipy = "*"
 pandas = "*"
 tqdm = "*"
 jupyterlab = "*"
+scikit-image = "*"
 
 [dev-packages]
 
