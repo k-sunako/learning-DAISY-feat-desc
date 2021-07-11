@@ -1,0 +1,52 @@
+#+LaTeX_CLASS: koma-jarticle
+
+#+STARTUP:  overview
+#+STARTUP:  hidestars
+#+OPTIONS:  H:4 num:nil toc:nil \n:nil @:t ::t |:t ^:nil -:t f:t *:t TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+LINK_UP:
+#+LINK_HOME:
+#+MACRO: if-html (eval (if (org-export-derived-backend-p org-export-current-backend 'html) $1))
+#+MACRO: if-latex (eval (if (org-export-derived-backend-p org-export-current-backend 'latex) $1))
+
+#+TITLE: DAISYの参考文献
+#+AUTHOR: k-sunako
+#+DATE: [2021-07-11 日 11:41]
+
+{{{if-latex(\vspace*{-1.5cm})}}}
+
+* 概要
+  DAISYの参考文献の参考文献をまとめる。
+  
+** 論文
+
+*** Tola, E., Lepetit, V., & Fua, P., Daisy: an efficient dense descriptor applied to wide-baseline stereo
+
+    これが DAISY の元論文。cite:tola2009daisy
+
+
+    概要の和訳を記す。
+    #+begin_quote
+    この論文では、高密度で計算するのに非常に効率的なローカル画像記述子
+    DAISYを紹介します。  また、この記述子を使用して、ワイドベースラインの
+    画像ペアから高密度の深度マップとオクルージョンマップを計算するためのEM
+    ベースのアルゴリズムも紹介します。  これにより、狭いベースラインのステ
+    レオで一般的に使用されるピクセルおよび相関ベースのアルゴリズムよりも、
+    広いベースラインの状況ではるかに優れた結果が得られます。  また、記述子
+    を使用すると、アルゴリズムが多くの測光および幾何学的変換に対して堅牢に
+    なります。  私たちの記述子は、SIFTやGLOHなどの以前の記述子から着想を得
+    ていますが、私たちの目的のためにはるかに高速に計算できます。  すべての
+    ピクセルで効率的に計算できるSURFとは異なり、高密度で使用した場合にマッ
+    チングパフォーマンスを低下させるアーティファクトは発生しません。  私た
+    ちのアプローチは、広いベースラインの画像ペアから密な深度マップを推定し
+    ようとする最初のアルゴリズムであり、深度推定の精度、オクルージョン検出、
+    および比較のための多くの実験で優れていることを示していることに注意する
+    ことが重要です。レーザースキャンされたグラウンドトゥルースシーンの他の
+    記述子に対してそれを。  また、さまざまな測光および幾何学的変換を使用し
+    て、さまざまな屋内および屋外のシーンでアプローチをテストしました。実験
+    は、これらに対して堅牢であるという私たちの主張を裏付けています。
+    #+end_quote
+
+* 参考文献
+  #+LaTeX: \printbibliography[heading=none]  
+  {{{if-html(bibliography:~/myspace/Bibliography/references.bib)}}}
+
