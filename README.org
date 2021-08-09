@@ -1,0 +1,54 @@
+* DAISY について
+
+
+** Scikit Image
+
+*** API
+[[https://scikit-image.org/docs/dev/api/skimage.feature.html#skimage.feature.daisy][Module: feature — skimage v0.19.0.dev0 docs]] より
+
+*** 引数
+**** image: 画像(グレースケール)
+サンプルページの ~data.camra()~ は元よりグレースケールだが、
+~data.astronaut()~ などはカラーなので下記のように変換。
+
+#+CAPTION: グレースケールへの変換
+#+begin_src python
+  from skimage import data
+  from skimage.color import rgb2gray
+  
+  original = data.astronaut()
+  grayscale = rgb2gray(original)
+#+end_src
+
+
+**** step: 記述子の間の距離
+このAPIは画像を丸ごと入力とし、一括で記述子を計算する。そのため、記述
+子の位置のパターンを与える必要がある。 ~step~ は横/縦の両方に適用され
+る。
+
+**** radius: 最も外側の環の中心までの距離
+パラメータの説明で表われる /ring/ は環と訳した。これは記述子の座標を中
+心として複数存在する。サンプルページなどでは円が目立つが円が環の上に描
+かれていることになる。
+
+記述子の座標からの最も外側の環が描かれる中心までの距離である。
+
+**** rings: 環の個数
+~radius~ で決定している最も外側の環も含めての環の個数となる。そのため、
+内側に /rings - 1/ の環が設定される。
+
+**** histogram: 環上の円の個数
+
+**** orientation: 一つの円内で幾つの向きをサンプルするか
+
+*** 戻値
+画像の記述子が一括で出力される。一つ一つの記述子のベクトルのサイズは環
+(ring)の個数と環上の円(histogram)の個数を乗算し全ての円(histogram)の個
+数を算出。中心の円(histogram)の分を /+1/ とし、円(histogram)でサンプル
+している向き(orientation)を乗算する。
+
+#+begin_src text
+      n_dim = (rings x histogram + 1) x orientation
+#+end_src
+
+
